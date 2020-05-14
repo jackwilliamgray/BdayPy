@@ -73,6 +73,10 @@ for element in  driver.find_elements_by_xpath("(//ul)[1]"):
     print("wished " + name.text + " a happy birthday")
 
 print("ran successfully")
+with open("history.logs", 'a') as f:
+    for eye in names:
+        f.write('Wished ' + eye + 'happy bday\n')
+        
 time.sleep(1)
 driver.quit()
 exit()

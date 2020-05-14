@@ -1,6 +1,5 @@
 # BdayPy
 a lil python script that uses selenium to automatically post happy birthday to all your friends on facebook.
-probably could be better optimised but oh well does the job.
 
  ## Installation & Setup
 Install [Python](https://www.python.org/downloads/)

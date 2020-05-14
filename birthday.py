@@ -28,7 +28,7 @@ else:
   
 #define driver and load intial page
 chrome_options = Options()
-# chrome_options.add_argument("--headless")
+chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(chrome_options=chrome_options, executable_path=chromeDriverLocation)
 driver.get('http://m.facebook.com/')
 time.sleep(delay) 
@@ -38,7 +38,6 @@ email = driver.find_element_by_name('email')
 email.send_keys(userEmail)
 password = driver.find_element_by_name('pass')
 password.send_keys(userPass)
-# password.submit() alternate method for logging in, seems to bug out web tho
 login = driver.find_element_by_name('login')
 login.click()
 time.sleep(delay)
@@ -47,53 +46,33 @@ time.sleep(delay)
 driver.get("https://m.facebook.com/events/calendar/birthdays/")
 time.sleep(delay)  
 
-#get list of names and urls for their profile pages
+#get list of names and send random message
 names = []
-urls = []
 for element in  driver.find_elements_by_xpath("(//ul)[1]"):
+    #get individuals name and store in case i wanna do anything with it later
     name = element.find_element_by_xpath("//a//p[1]")
     names.append(name.text)
-    url = element.find_element_by_xpath("//a")
-    urls.append(url.get_attribute('href')) 
-    bdayMessage = "bday message"
+
+    #generate random bday message
+    bdayMessage = "Happy bday!"
     with open("birthday.cfg") as f:
         lines = f.readlines()
         bdayMessage = random.choice(lines)
+
+    #fill randomly generated bday message into text box
     textinput = element.find_element_by_xpath("//textarea")
     if "$name" in bdayMessage:
         textinput.send_keys(bdayMessage.replace("$name",name.text.split(' ', 1)[0]))
     elif "$name" not in bdayMessage:
         textinput.send_keys(bdayMessage)
-    
-    time.sleep(delay/2)
 
-    textsend = element.find_element_by_xpath("//button") name.text.split(' ', 1)[0]
+    time.sleep(delay/2)
+    textsend = element.find_element_by_xpath("//button")
     textsend.click()
     time.sleep(delay)
-  
+    print("wished " + name.text + " a happy birthday")
 
-
-
-
-
-
-#goto each persons page and write happy birthday message of sorts!
-# for x in urls:
-#     driver.get(x)
-#     print(names[urls.index(x)])
-#     time.sleep(delay)
-#     composebutton = driver.find_element_by_xpath("//*[contains(text(), 'Write on')]")
-#     composebutton.click()
-#     time.sleep(delay)
-#     composeinput = driver.find_element_by_xpath("//textarea[1]")
-#     composeinput.send_keys("Happy birthday!")
-#     time.sleep(delay)
-
-
-
-
-
-print('ran successfully')
+print("ran successfully")
 time.sleep(1)
 driver.quit()
 exit()

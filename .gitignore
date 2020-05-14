@@ -3,3 +3,4 @@ chromedriver_win32/
 chromedriver_win32/*
 *.code-workspace
 *.logs
+*.bat

@@ -1,0 +1,10 @@
+{
+    "UserInfo": {
+        "email": "",
+        "password": ""
+    },
+    "Settings":{
+        "delay":3,
+        "chromeDriverLocation":".\\chromedriver_win32\\chromedriver.exe"
+    }
+}

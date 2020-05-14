@@ -9,6 +9,7 @@ try:
     userEmail = dictionary["UserInfo"]["email"]
     userPass = dictionary["UserInfo"]["password"]
     delay = dictionary["Settings"]["delay"]
+    chromeDriverLocation = dictionary["Settings"]["chromeDriverLocation"]
     file.close()
     
     
@@ -22,9 +23,8 @@ else:
 
 chrome_options = Options()
 # chrome_options.add_argument("--headless")
-driver = webdriver.Chrome(chrome_options=chrome_options,
-    executable_path=r'C:\Users\raow2\Documents\BirthdayPy\chromedriver_win32\chromedriver.exe')
-    
+# driver = webdriver.Chrome(chrome_options=chrome_options, executable_path=r'C:\Users\raow2\Documents\BirthdayPy\chromedriver_win32\chromedriver.exe')
+driver = webdriver.Chrome(chrome_options=chrome_options, executable_path=chromeDriverLocation)
 driver.get('http://m.facebook.com/')
 time.sleep(delay)  # Let the user actually see something!
 email = driver.find_element_by_name('email')

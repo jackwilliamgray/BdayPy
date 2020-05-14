@@ -4,7 +4,9 @@ probably could be better optimised but oh well does the job.
 
  ## Installation & Setup
 Install [Python](https://www.python.org/downloads/)
+
 Download [ChromeDriver](chromedriver.chromium.org/downloads)
+
 Install [Selenium](https://selenium-python.readthedocs.io/installation.html#downloading-python-bindings-for-selenium) (only need step 1.2)
 
 Change samplesettings.json to settings.json
